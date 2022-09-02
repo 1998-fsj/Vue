@@ -43,6 +43,7 @@
               id="autocomplete"
               class="input-error input-xxlarge"
               v-model="keyword"
+              @keydown.enter="goSearch"
             />
             <button
               class="sui-btn btn-xlarge btn-danger"
@@ -72,8 +73,12 @@
     // methods方法
     methods: {
       goSearch() {
-        // this.$router.push("/search");
-        this.$router.push("/search/" + this.keyword + "?k=" + this.keyword.toUpperCase())
+        // this.$router.push("/search/" + this.keyword) ;
+        // this.$router.push("/search/" + this.keyword + "?k=" + this.keyword.toUpperCase())
+        // this.$router.push({name:'search',param:{k:this.keyword.toUpperCase()}})
+        // this.$router.push({name:'search',params:{keyword:this.keyword},query:{k:this.keyword.toUpperCase()}})
+        let res = this.$router.push({name:'search',params:{keyword:this.keyword},query:{k:this.keyword.toUpperCase()}})
+        console.log(res);
         // this.$router.push(`/search/${this.keyword}?k=${this.keyword.toUpperCase}`)
       },
     },
